@@ -43,3 +43,6 @@
   margin-top: -50px;
   margin-left: -100px;
 }
+.landing-page-container {
+  display: flex;
+}

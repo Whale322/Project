@@ -52,17 +52,17 @@ function App(){
 
     return(
         <div className="page">
-            <div className="landing-page-container">
+                <form className="form">
+                    <input
+                        className="input"
+                        value={username}
+                        placeholder='GitHub Username'
+                        onChange={e => setUsername(e.target.value)}
+                    />
+                    <button className="button" onClick={handleSubmit}>{loading ? "Searching..." : "Search"}</button>
+                </form>
+            <div className="landing-page-container"  display="flex">
                 <div className="left-side">
-                    <form className="form">
-                        <input
-                            className="input"
-                            value={username}
-                            placeholder='GitHub Username'
-                            onChange={e => setUsername(e.target.value)}
-                        /> 
-                        <button className="button" onClick={handleSubmit}>{loading ? "Searching..." : "Search"}</button>                        
-                    </form>
                     <div className="results-container">
                         {repos.map(renderRepo)}
                     </div>
