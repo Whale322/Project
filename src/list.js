@@ -11,6 +11,7 @@ function App(){
     const [loading, setLoading] = useState(false);
     const [repos, setRepos] = useState([]);
     const [details, setDetails] = useState({});
+    const [readme, setReadme] = useState("");
     const [detailsLoading, setDetailsLoading] = useState(false);
 
     function handleSubmit(e){
@@ -48,6 +49,13 @@ function App(){
             setDetailsLoading(false);
             setDetails(res.data);
         });
+        axios({
+            method: "get",
+            url: `https://api.github.com/repos/${username}/${repoName}/contents/README.md`,
+        }).then(res => {
+            setLoading(false);
+            setReadme(atob(res.data.content));
+        });
     }
 
     return(
@@ -67,7 +75,7 @@ function App(){
                         {repos.map(renderRepo)}
                     </div>
                 </div>
-                <RepoDetails details={details} loading={detailsLoading} />
+                <RepoDetails details={details} readme = {readme} loading={detailsLoading} />
             </div>
         </div>
     )

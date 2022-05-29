@@ -1,4 +1,4 @@
-export default function RepoDetails({ details, loading}) {
+export default function RepoDetails({ details, readme, loading}) {
     if (loading) {
         return(
             <h1 className="loader">Loading...</h1>
@@ -18,9 +18,9 @@ export default function RepoDetails({ details, loading}) {
 
             <div className="details-row">
                 <label className="label">Readme:</label>
-                <span className="value">{details.readme}</span>
+                <span className="value">{readme}</span>
             </div>
-        </div>                                                       
+        </div>
 
     )
 }
